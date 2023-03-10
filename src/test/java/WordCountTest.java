@@ -19,6 +19,7 @@ class WordCountTest {
         Map<String, Integer> actual = WordCount.getWordCount(document);
         assertEquals(expected, actual);
     }
+
     @Test
     public void emptyStringTestCase() {
         String text = "";
@@ -28,6 +29,7 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
+
     @Test
     public void singleWordTestCase() {
         String text = "hello";
@@ -38,6 +40,7 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
+
     @Test
     public void SeparatorsTestCase() {
         String text = "This\tis\na\tsample text\nwith spaces\tand\ttabs\nas\nseparators";
@@ -58,6 +61,7 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
+
     @Test
     public void repeatedWordsTestCase() {
         String text = "the quick brown fox jumps over the lazy dog the dog jumps over the brown fox jumps";
@@ -75,6 +79,7 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
+
     @Test
     public void multipleSpaceTestCase() {
         String text = "This   is   a    sample   text  with   multiple    space    separators";
@@ -93,6 +98,7 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
+
     @Test
     public void numbersTestCase() {
         String text = "This is a sample text with numbers like 123 and 456";
@@ -113,19 +119,17 @@ class WordCountTest {
 
         assertEquals(expectedWordCounts, wordCounts);
     }
-//    @Test
-//    public void caseInsensitivityTestCase() {
-//        String text = "this IS a SaMPLe tExt with text";
-//        Map<String, Integer> expectedWordCounts = new HashMap<>();
-//        expectedWordCounts.put("this", 1);
-//        expectedWordCounts.put("is", 1);
-//        expectedWordCounts.put("a", 1);
-//        expectedWordCounts.put("sample", 1);
-//        expectedWordCounts.put("text", 1);
-//        expectedWordCounts.put("with", 1);
-//
-//        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
-//
-//        assertEquals(expectedWordCounts, wordCounts);
-//    }
+
+    @Test// set a timeout of 5 seconds
+    public void testGetWordCountWithLargeInput() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 1000000; i++) {
+            sb.append("largeinput ");
+        }
+        String text = sb.toString();
+        Map<String, Integer> expectedOutput = new HashMap<>();
+        expectedOutput.put("largeinput", 1000000);
+        Map<String, Integer> actualOutput = WordCount.getWordCount(text);
+        assertEquals(expectedOutput, actualOutput);
+}
 }
