@@ -25,16 +25,16 @@ Add MAVEN_HOME Directory in PATH Variable
 
 Verify maven installation
 In the command prompt, use the following command:
-$ mvn -version
+`mvn -version`
 
 Steps to run the project
 1. Go to the root directory where pom.xml file is located
 cd <folderpath>
-2. Then execute command: jar cfm WordAnalysisProject-1.0-SNAPSHOT.jar target/META-INF/MANIFEST.MF -C target/classes .
+2. Then execute command: `jar cfm WordAnalysisProject-1.0-SNAPSHOT.jar target/META-INF/MANIFEST.MF -C target/classes .`
 3. JAR file named WordAnalysisProject-1.0-SNAPSHOT.jar will be created.
 4. Then execute the following command to get the output:
-java -cp WordAnalysisProject-1.0-SNAPSHOT.jar WordCount "This is a Sample string"
+`java -cp WordAnalysisProject-1.0-SNAPSHOT.jar WordCount "This is a Sample string"`
 5. "This ia Sample string" can be replaced by any of the other string you want to test
 
 Command to test the project:
-$ mvn test
+`mvn test`
