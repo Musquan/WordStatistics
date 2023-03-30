@@ -1,6 +1,6 @@
 <h1>Development Environment:</h1>
 
-This project is build using Maven framework and developed using eclipse IDE. Unit testing is performed using JUnit library with Maven.
+This project is build using Maven framework and developed using IntelliJ IDE. Unit testing is performed using JUnit library with Maven.
 
 <h1>Prerequisites:</h1>
 Maven and JDK has to be installed
