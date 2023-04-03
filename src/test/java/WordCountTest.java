@@ -8,14 +8,16 @@ import java.util.Map;
 class WordCountTest {
 
     @Test
-    void getWordCount() {
-        String document = "This is a sample document";
+    void stringWithMultipleUniqueWords() {
+        String document = "This is a sample string";
         Map<String, Integer> expected = new HashMap<>();
         expected.put("This", 1);
         expected.put("is", 1);
         expected.put("a", 1);
         expected.put("sample", 1);
-        expected.put("document", 1);
+        expected.put("string", 1);
+        expected.put("Number of lines", 1);
+        expected.put("Number of characters", 19);
         Map<String, Integer> actual = WordCount.getWordCount(document);
         assertEquals(expected, actual);
     }
@@ -24,26 +26,30 @@ class WordCountTest {
     public void emptyStringTestCase() {
         String text = "";
         Map<String, Integer> expectedWordCounts = new HashMap<>();
-
+        expectedWordCounts.put("Number of lines", 0);
+        expectedWordCounts.put("Number of characters", 0);
         Map<String, Integer> wordCounts = WordCount.getWordCount(text);
 
         assertEquals(expectedWordCounts, wordCounts);
     }
 
     @Test
-    public void singleWordTestCase() {
-        String text = "hello";
+    public void stringWithSingleWord() {
+        String text = "Hello";
         Map<String, Integer> expectedWordCounts = new HashMap<>();
-        expectedWordCounts.put("hello", 1);
-
+        expectedWordCounts.put("Hello", 1);
+        expectedWordCounts.put("Number of lines", 1);
+        expectedWordCounts.put("Number of characters", 5);
         Map<String, Integer> wordCounts = WordCount.getWordCount(text);
 
         assertEquals(expectedWordCounts, wordCounts);
     }
 
     @Test
-    public void SeparatorsTestCase() {
-        String text = "This\tis\na\tsample text\nwith spaces\tand\ttabs\nas\nseparators";
+    public void stringWithMultipleSeparators() {
+        String text = "This\tis\na\tsample text\n" +
+                "with spaces\tand\ttabs\n" +
+                "as\nseparators";
         Map<String, Integer> expectedWordCounts = new HashMap<>();
         expectedWordCounts.put("This", 1);
         expectedWordCounts.put("is", 1);
@@ -56,6 +62,21 @@ class WordCountTest {
         expectedWordCounts.put("tabs", 1);
         expectedWordCounts.put("as", 1);
         expectedWordCounts.put("separators", 1);
+        expectedWordCounts.put("Number of lines", 5);
+        expectedWordCounts.put("Number of characters", 46);
+        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
+
+        assertEquals(expectedWordCounts, wordCounts);
+    }
+
+    @Test
+    public void stringWithRepeatedWords() {
+        String text = "hello world hello world";
+        Map<String, Integer> expectedWordCounts = new HashMap<>();
+        expectedWordCounts.put("hello", 2);
+        expectedWordCounts.put("world", 2);
+        expectedWordCounts.put("Number of lines", 1);
+        expectedWordCounts.put("Number of characters", 20);
 
         Map<String, Integer> wordCounts = WordCount.getWordCount(text);
 
@@ -63,57 +84,15 @@ class WordCountTest {
     }
 
     @Test
-    public void repeatedWordsTestCase() {
-        String text = "the quick brown fox jumps over the lazy dog the dog jumps over the brown fox jumps";
+    public void stringWithNumbers() {
+        String text = "Hello 123 world 456";
         Map<String, Integer> expectedWordCounts = new HashMap<>();
-        expectedWordCounts.put("the", 4);
-        expectedWordCounts.put("quick", 1);
-        expectedWordCounts.put("brown", 2);
-        expectedWordCounts.put("fox", 2);
-        expectedWordCounts.put("jumps", 3);
-        expectedWordCounts.put("over", 2);
-        expectedWordCounts.put("lazy", 1);
-        expectedWordCounts.put("dog", 2);
-
-        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
-
-        assertEquals(expectedWordCounts, wordCounts);
-    }
-
-    @Test
-    public void multipleSpaceTestCase() {
-        String text = "This   is   a    sample   text  with   multiple    space    separators";
-        Map<String, Integer> expectedWordCounts = new HashMap<>();
-        expectedWordCounts.put("This", 1);
-        expectedWordCounts.put("is", 1);
-        expectedWordCounts.put("a", 1);
-        expectedWordCounts.put("sample", 1);
-        expectedWordCounts.put("text", 1);
-        expectedWordCounts.put("with", 1);
-        expectedWordCounts.put("multiple", 1);
-        expectedWordCounts.put("space", 1);
-        expectedWordCounts.put("separators", 1);
-
-        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
-
-        assertEquals(expectedWordCounts, wordCounts);
-    }
-
-    @Test
-    public void numbersTestCase() {
-        String text = "This is a sample text with numbers like 123 and 456";
-        Map<String, Integer> expectedWordCounts = new HashMap<>();
-        expectedWordCounts.put("This", 1);
-        expectedWordCounts.put("is", 1);
-        expectedWordCounts.put("a", 1);
-        expectedWordCounts.put("sample", 1);
-        expectedWordCounts.put("text", 1);
-        expectedWordCounts.put("with", 1);
-        expectedWordCounts.put("numbers", 1);
-        expectedWordCounts.put("like", 1);
+        expectedWordCounts.put("Hello", 1);
         expectedWordCounts.put("123", 1);
-        expectedWordCounts.put("and", 1);
+        expectedWordCounts.put("world", 1);
         expectedWordCounts.put("456", 1);
+        expectedWordCounts.put("Number of lines", 1);
+        expectedWordCounts.put("Number of characters", 16);
 
         Map<String, Integer> wordCounts = WordCount.getWordCount(text);
 
@@ -129,7 +108,76 @@ class WordCountTest {
         String text = sb.toString();
         Map<String, Integer> expectedOutput = new HashMap<>();
         expectedOutput.put("largeinput", 1000000);
+        expectedOutput.put("Number of lines", 1);
+        expectedOutput.put("Number of characters", 10000000);
         Map<String, Integer> actualOutput = WordCount.getWordCount(text);
         assertEquals(expectedOutput, actualOutput);
 }
+
+    @Test
+    public void stringWithMultipleLines() {
+        String text = "This is the first line.\nThis is the second line.\nAnd this is the third line.";
+        Map<String, Integer> expectedWordCounts = new HashMap<>();
+        expectedWordCounts.put("This", 2);
+        expectedWordCounts.put("is", 3);
+        expectedWordCounts.put("the", 3);
+        expectedWordCounts.put("first", 1);
+        expectedWordCounts.put("line.", 3);
+        expectedWordCounts.put("second", 1);
+        expectedWordCounts.put("third", 1);
+        expectedWordCounts.put("And", 1);
+        expectedWordCounts.put("this", 1);
+        expectedWordCounts.put("Number of lines", 3);
+        expectedWordCounts.put("Number of characters", 61);
+
+        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
+
+        assertEquals(expectedWordCounts, wordCounts);
+    }
+
+    @Test
+    public void stringWithPunctuation() {
+        String text = "Hello! It's a beautiful day";
+        Map<String, Integer> expectedWordCounts= new HashMap<>();
+        expectedWordCounts.put("Hello!", 1);
+        expectedWordCounts.put("It's", 1);
+        expectedWordCounts.put("a", 1);
+        expectedWordCounts.put("beautiful", 1);
+        expectedWordCounts.put("day", 1);
+        expectedWordCounts.put("Number of lines", 1);
+        expectedWordCounts.put("Number of characters", 23);
+        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
+
+        assertEquals(expectedWordCounts, wordCounts);
+    }
+
+    @Test
+    public void stringWithMixedCharacters() {
+        String text = "HELLO WORLD hello world";
+        Map<String, Integer> expectedWordCounts = new HashMap<>();
+        expectedWordCounts.put("hello", 1);
+        expectedWordCounts.put("world", 1);
+        expectedWordCounts.put("HELLO", 1);
+        expectedWordCounts.put("WORLD", 1);
+        expectedWordCounts.put("Number of lines", 1);
+        expectedWordCounts.put("Number of characters", 20);
+        Map<String, Integer> wordCounts = WordCount.getWordCount(text);
+        assertEquals(expectedWordCounts, wordCounts);
+    }
+
+    @Test
+    void stringWithSpecialCharacters() {
+        String document = "This! is @#$%^&*() a sample document.";
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("This!", 1);
+        expected.put("is", 1);
+        expected.put("@#$%^&*()", 1);
+        expected.put("a", 1);
+        expected.put("sample", 1);
+        expected.put("document.", 1);
+        expected.put("Number of lines", 1);
+        expected.put("Number of characters", 32);
+        Map<String, Integer> actual = WordCount.getWordCount(document);
+        assertEquals(expected, actual);
+    }
 }
