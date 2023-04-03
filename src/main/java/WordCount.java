@@ -11,14 +11,14 @@ public class WordCount {
         int numChars = 0;
 
         // Split the text into lines using the newline character
-        String[] lines = text.split("\\r?\\n");
+        String[] lines = text.split("\n");
 
         // Iterate over the lines and split each line into words
         for (String line : lines) {
             if(!line.equals("")) {
                 numLines++; // Increment line count
             }
-            String[] words = text.split("\\s+|\\t|\\n");
+            String[] words = line.split("\\s+");
             for (String word : words) {
                 numChars += word.length(); //Increment character count
                 if (!word.equals("")) {
@@ -36,7 +36,11 @@ public class WordCount {
         return wordCounts;
     }
     public static void main(String[] args) {
-        String text = args[0];
+        // Take input from user
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the input string:");
+        String text = scanner.nextLine();
+        scanner.close();
         Map<String, Integer> wordCounts = getWordCount(text);
         // Print the word counts
         for (String word : wordCounts.keySet()) {
