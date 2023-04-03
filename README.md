@@ -45,18 +45,21 @@ In the command prompt, use the following command:
 
 <h1>Unit Testing</h1>
 
-1: Input string with multiple unique words, program outputs correct counts for each word.<br>
-2: Empty input string.<br>
-3: Input string with single word, program outputs count of 1.<br>
-4: Input string with multiple separators like spaces, tabs and newlines, program outputs correct counts for each word.<br>
-5: Input string with repeated words.<br>
-6: Input string with multiple space between words.<br>
-7: Input string with numbers in string.<br>
-8: Input string to handle large input strings efficiently.
+1:  Input string with multiple unique words.<br>
+2:  Empty input string.<br>
+3:  Input string with single word.<br>
+4:  Input string with multiple separators like spaces, tabs and newline.<br>
+5:  Input string with repeated words.<br>
+6:  Input string with numbers in string.<br>
+7:  Input string to handle large input strings efficiently.<br>
+8:  Input string with Multiple Lines.<br>
+9:  Input string with Punctuation.<br>
+10: Input string with mixed characters(Upper case and Lower case).<br>
+11: Input string with special chracters.<br>
 
 All test cases are passed.
 
-![image](https://user-images.githubusercontent.com/71215436/228964147-fafd638e-a820-49bb-a97b-b3079feceafa.png)
+![image](https://user-images.githubusercontent.com/71215436/229411299-fe38df42-d78e-48a8-b61d-e55c6c56d364.png)
 
 Command used to test:
 
