@@ -36,11 +36,7 @@ public class WordCount {
         return wordCounts;
     }
     public static void main(String[] args) {
-        // Take input from user
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the input string:");
-        String text = scanner.nextLine();
-        scanner.close();
+        String text = args[0];
         Map<String, Integer> wordCounts = getWordCount(text);
         // Print the word counts
         for (String word : wordCounts.keySet()) {
@@ -55,3 +51,5 @@ public class WordCount {
         System.out.println("Number of characters: " + numChars);
     }
 }
+
+
