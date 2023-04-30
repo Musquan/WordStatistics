@@ -40,22 +40,17 @@ In the command prompt, use the following command:
 2. Then execute command: `jar cfm WordAnalysisProject-1.0-SNAPSHOT.jar target/META-INF/MANIFEST.MF -C target/classes .`
 3. JAR file named WordAnalysisProject-1.0-SNAPSHOT.jar will be created.
 4. Then execute the following command to get the output:
-`java -cp WordAnalysisProject-1.0-SNAPSHOT.jar WordCount "This is a Sample string"`
-5. "This ia Sample string" can be replaced by any of the other string you want to test
+`java -cp WordAnalysisProject-1.0-SNAPSHOT.jar WordReplace`
 
 <h1>Unit Testing</h1>
 
-1:  Input string with multiple unique words.<br>
-2:  Empty input string.<br>
-3:  Input string with single word.<br>
-4:  Input string with multiple separators like spaces, tabs and newline.<br>
-5:  Input string with repeated words.<br>
-6:  Input string with numbers in string.<br>
-7:  Input string to handle large input strings efficiently.<br>
-8:  Input string with Multiple Lines.<br>
-9:  Input string with Punctuation.<br>
-10: Input string with mixed characters(Upper case and Lower case).<br>
-11: Input string with special chracters.<br>
+1: Input string with a single occurrence of a word in a string<br>
+2: Input string with multiple occurrences of a word in a string<br>
+3: Input string which has a replacement word as a part of another word<br>
+4: Input string with no replacement word<br>
+5: Input string which doesn’t have a replacement word<br>
+6: Input string which has replacement word with different case(uppercase or lowercase)<br>
+
 
 All test cases are passed.
 
