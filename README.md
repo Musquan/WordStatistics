@@ -54,7 +54,7 @@ In the command prompt, use the following command:
 
 All test cases are passed.
 
-![image](https://user-images.githubusercontent.com/71215436/229411299-fe38df42-d78e-48a8-b61d-e55c6c56d364.png)
+![image](https://user-images.githubusercontent.com/71215436/235367260-f080594f-3e61-426b-bdeb-518aaec3d095.png)
 
 Command used to test:
 
