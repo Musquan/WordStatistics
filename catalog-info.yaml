@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: wordstatistics
+  description: A software component for analyzing and generating statistics on word usage and frequency.
+  annotations:
+    github.com/project-slug: musquan/wordstatistics
+    jira/project-key: SCRUM
+    jira/label: backstage-component:wordstatistics
+spec:
+  type: application
+  owner: ICS
+  lifecycle: experimental
